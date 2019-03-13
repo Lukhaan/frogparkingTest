@@ -21,8 +21,6 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    private val nodes = Nodes()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_main)
@@ -131,12 +129,12 @@ class MainActivity : AppCompatActivity() {
 
         for (i in 0 until nodeNames.size - 1) {
             //Node contains Name and route array eg [Origin A, Destination B, Distance 5]
-            val origin = nodes.getNode(nodeNames[i])
-            val destination = nodes.getNode(nodeNames[i + 1])
+            val origin = Nodes.getNode(nodeNames[i])
+            val destination = Nodes.getNode(nodeNames[i + 1])
 
             if (origin.doesRouteExist(destination) != null) {
                 totalDistance = totalDistance!! +
-                        nodes.getNode(nodeNames[i]).getRoute(origin, destination)!!.distance!!
+                        Nodes.getNode(nodeNames[i]).getRoute(origin, destination)!!.distance!!
             } else {
                 validRoute = false
             }
@@ -267,8 +265,8 @@ class MainActivity : AppCompatActivity() {
 
         var allPaths = getAllRoutes(
             ArrayList(),
-            nodes.getNode(filters.startNode!!),
-            nodes.getNode(filters.endNode!!)
+            Nodes.getNode(filters.startNode!!),
+            Nodes.getNode(filters.endNode!!)
         )
 
 

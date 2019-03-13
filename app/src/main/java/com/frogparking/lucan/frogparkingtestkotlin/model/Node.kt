@@ -2,10 +2,10 @@ package com.frogparking.lucan.frogparkingtestkotlin.model
 
 import java.util.ArrayList
 
-class Node(val name: String) : INode {
+class Node(val name: String) {
     val routes = ArrayList<Route>()
 
-    override fun doesRouteExist(destination: Node): Route? {
+    fun doesRouteExist(destination: Node): Route? {
         routes.forEach {
             if (it.destination == destination) {
                 return it
@@ -14,7 +14,7 @@ class Node(val name: String) : INode {
         return null
     }
 
-    override fun getRoute(origin: Node, destination: Node): Route? {
+    fun getRoute(origin: Node, destination: Node): Route? {
         routes.forEach {
             if (it.origin == origin && it.destination == destination) {
                 return it
@@ -23,7 +23,7 @@ class Node(val name: String) : INode {
         return null
     }
 
-    override fun addRoute(route: Route) {
+    fun addRoute(route: Route) {
         this.routes.add(route)
     }
 }
